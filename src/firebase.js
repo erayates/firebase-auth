@@ -1,8 +1,9 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import {getAuth,createUserWithEmailAndPassword,signInWithEmailAndPassword,signOut} from 'firebase/auth';
-import { useToast } from "@chakra-ui/react";
+import {getAuth,createUserWithEmailAndPassword,signInWithEmailAndPassword,signOut, onAuthStateChanged, updateProfile} from 'firebase/auth';
 
+import store from "./store";
+import {login as loginHandle, logout as logoutHandle ,} from './store/auth'
 
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -51,6 +52,25 @@ export const logout = async (email,password) => {
 }
 
 
+export const update = async data => {
+  try{
+    await updateProfile(auth.currentUser,data)
+    return true
+  }
+  catch(e){
+    console.log(e.message)
+  }
+ 
+}
+
+
+onAuthStateChanged(auth,(user) => {
+  if(user){
+    store.dispatch(loginHandle(user))
+  }else{
+    store.dispatch(logoutHandle())
+  }
+})
 
 
 // Initialize Firebase

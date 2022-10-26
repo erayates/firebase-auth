@@ -5,8 +5,11 @@ import {ChakraProvider,Button,FormControl,FormLabel,Input,useToast} from '@chakr
 
 import {login} from '../firebase'
 
+import {useNavigate} from 'react-router-dom'
 
 function Login() {
+  const navigate = useNavigate()
+
   const [email,setEmail] = useState('')
   const [password,setPassword] = useState('')
 
@@ -15,13 +18,9 @@ function Login() {
     e.preventDefault()
     const user = await login(email,password)
     if(user){
-      toast({
-        title: "You logged in successfully.",
-        status: "info",
-        duration: 2000,
+      navigate('/',{
+        replace: true
       })
-      setEmail('')
-      setPassword('')
     }else{
         toast({
             title: "Invalid email or password or Access to this account has been temporarily disabled due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later.",

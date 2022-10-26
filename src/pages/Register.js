@@ -5,6 +5,9 @@ import {ChakraProvider,Button,FormControl,FormLabel,FormHelperText,Input,useToas
 
 import {register} from '../firebase'
 
+import {useDispatch} from 'react-redux'
+import {login} from '../firebase'
+
 
 function Register() {
   const [email,setEmail] = useState('')
