@@ -11,13 +11,13 @@ import {login as loginHandle, logout as logoutHandle ,} from './store/auth'
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyC0g6Kh4EvQnRt1X3ML51YIWlOK8Yj2YqQ",
-  authDomain: "react-shopapp-6d9fd.firebaseapp.com",
-  databaseURL: "https://react-shopapp-6d9fd-default-rtdb.firebaseio.com",
-  projectId: "react-shopapp-6d9fd",
-  storageBucket: "react-shopapp-6d9fd.appspot.com",
-  messagingSenderId: "906086479928",
-  appId: "1:906086479928:web:2a817b6a7bbc2566ae8ecd"
+  apiKey: process.env.REACT_APP_APIKEY,
+  authDomain: process.env.REACT_APP_AUTHDOMAIN,
+  databaseURL: process.env.REACT_APP_DATABASE_URL,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID
 };
 
 const app = initializeApp(firebaseConfig);
